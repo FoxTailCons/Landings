@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDV para Restaurante, Pizzaria e Lanchonete + Cardápio Digital com Pedido PIX | FoxTail Consulting</title>
+<meta name="description" content="Sistema PDV completo para restaurantes, pizzarias e lanchonetes. Comandas digitais, cozinha integrada e Cardápio Digital com pedido online via PIX. Demonstração gratuita pela FoxTail Consulting.">
+<meta name="keywords" content="PDV restaurante, sistema PDV pizzaria, cardápio digital, pedido online PIX, comanda digital, PDV web, sistema para lanchonete">
+<meta name="author" content="FoxTail Consulting">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="PDV + Cardápio Digital com Pedido PIX | FoxTail Consulting">
+<meta property="og:description" content="Atenda mais rápido no salão e venda pelo link do cardápio com pagamento via PIX. Sistema completo para restaurantes, pizzarias e lanchonetes.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf8f1; --bg-soft:#f3eee3; --card:#ffffff;
+  --text:#14261c; --muted:#5c6b62;
+  --emerald:#059669; --emerald-dark:#047857; --emerald-deep:#064e3b;
+  --emerald-soft:rgba(5,150,105,.10);
+  --amber:#d97706; --orange:#ea580c; --orange-soft:rgba(234,88,12,.10);
+  --border:rgba(20,38,28,.10); --dark:#0c2419; --dark-soft:#10301f;
+  --radius:14px; --shadow:0 10px 30px rgba(12,36,25,.10);
+  --shadow-lg:0 24px 60px rgba(12,36,25,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Quicksand',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--emerald-dark);background:var(--emerald-soft);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.eyebrow.amber{color:var(--amber);background:var(--orange-soft)}
+h2.section-title{font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px}
+p.section-sub{font-size:17px;color:var(--muted);max-width:640px;margin-bottom:48px}
+.center{text-align:center}
+.center p.section-sub{margin-left:auto;margin-right:auto}
+
+.svg-sprite{position:absolute;width:0;height:0;overflow:hidden}
+.icon{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:12px;font-weight:700;font-size:15px;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--emerald);color:#fff;box-shadow:0 8px 20px rgba(5,150,105,.30)}
+.btn-primary:hover{background:var(--emerald-dark);box-shadow:0 12px 26px rgba(5,150,105,.38)}
+.btn-orange{background:var(--orange);color:#fff;box-shadow:0 8px 20px rgba(234,88,12,.30)}
+.btn-orange:hover{background:#c2410c}
+.btn-outline{background:transparent;color:var(--text);border:2px solid var(--border)}
+.btn-outline:hover{border-color:var(--emerald);color:var(--emerald-dark)}
+.btn-light{background:#fff;color:var(--emerald-dark)}
+.btn-light:hover{background:#f0fdf4}
+.btn-whatsapp{background:#25D366;color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.35)}
+.btn-whatsapp:hover{background:#1da851}
+.btn .icon{width:18px;height:18px}
+
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,248,241,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;white-space:nowrap}
+.logo-mark{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,var(--emerald),var(--emerald-deep));display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 6px 14px rgba(5,150,105,.35)}
+.logo-mark .icon{width:22px;height:22px}
+.logo small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.nav-links{display:flex;align-items:center;gap:20px;font-size:13.5px;font-weight:600;color:var(--muted);white-space:nowrap}
+.nav-links a:hover{color:var(--emerald-dark)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta .btn{padding:10px 18px;font-size:14px}
+.menu-toggle{display:none;color:var(--text)}
+
+.hero{padding:140px 0 80px;position:relative;overflow:hidden;background:
+  radial-gradient(ellipse 80% 60% at 85% -10%, rgba(5,150,105,.10), transparent 60%),
+  radial-gradient(ellipse 60% 50% at 0% 20%, rgba(234,88,12,.07), transparent 60%),
+  var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(32px,4.8vw,50px);font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}
+.hero h1 .hl{color:var(--emerald-dark)}
+.hero h1 .hl-amber{color:var(--orange)}
+.hero p.lead{font-size:18px;color:var(--muted);margin-bottom:32px;max-width:540px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:18px;font-size:13.5px;font-weight:600;color:var(--muted)}
+.hero-trust span{display:inline-flex;align-items:center;gap:7px}
+.hero-trust .icon{width:16px;height:16px;color:var(--emerald)}
+
+.hero-visual{background:var(--card);border-radius:20px;border:1px solid var(--border);box-shadow:var(--shadow-lg);padding:32px;position:relative}
+.hero-visual h3{font-size:15px;font-weight:700;margin-bottom:16px;color:var(--emerald-dark)}
+.hero-visual ul{list-style:none}
+.hero-visual li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:14.5px}
+.hero-visual li:last-child{border-bottom:none}
+.hero-visual .check{width:22px;height:22px;border-radius:50%;background:var(--emerald-soft);color:var(--emerald-dark);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.hero-visual .check .icon{width:14px;height:14px}
+.hero-badge{position:absolute;top:-14px;right:20px;background:var(--orange);color:#fff;padding:8px 14px;border-radius:10px;font-size:12.5px;font-weight:700;box-shadow:0 8px 20px rgba(234,88,12,.35)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(5,150,105,.30)}
+.card-icon{width:48px;height:48px;border-radius:12px;background:var(--emerald-soft);color:var(--emerald-dark);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.card-icon.amber{background:var(--orange-soft);color:var(--orange)}
+.card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.card p{font-size:14.5px;color:var(--muted)}
+.card .dor-tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--orange);background:var(--orange-soft);padding:4px 10px;border-radius:6px;margin-bottom:10px}
+
+.highlight-band{background:linear-gradient(160deg,var(--dark) 0%,var(--dark-soft) 100%);color:#e8f5ee;padding:72px 0}
+.highlight-band .section-title{color:#fff}
+.highlight-band .section-sub{color:#9fc9b4}
+.highlight-band .eyebrow{background:rgba(217,119,6,.18);color:#fbbf24}
+.highlight-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+.highlight-list{list-style:none;margin-top:24px}
+.highlight-list li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:15px}
+.highlight-list li:last-child{border-bottom:none}
+.highlight-list .num{width:28px;height:28px;border-radius:8px;background:rgba(5,150,105,.25);color:#34d399;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.highlight-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px}
+.highlight-box h4{color:#fff;font-size:18px;margin-bottom:10px}
+.highlight-box p{color:#9fc9b4;font-size:14.5px;margin-bottom:18px}
+.highlight-box .tag{display:inline-block;background:rgba(37,211,102,.15);color:#4ade80;font-size:12px;font-weight:700;padding:5px 12px;border-radius:6px}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--emerald);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;margin-bottom:16px;box-shadow:0 8px 18px rgba(5,150,105,.3)}
+.step h4{font-size:16px;font-weight:700;margin-bottom:6px}
+.step p{font-size:14px;color:var(--muted)}
+
+.diff-band{background:var(--bg-soft)}
+.diff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.diff-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px}
+.diff-card .card-icon{background:var(--emerald-soft);color:var(--emerald-dark)}
+.diff-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.diff-card p{font-size:14px;color:var(--muted)}
+
+.pricing-card{max-width:680px;margin:0 auto;background:var(--card);border:2px solid var(--emerald);border-radius:20px;padding:48px 40px;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.pricing-card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--emerald),var(--amber),var(--orange))}
+.pricing-card .big{font-size:clamp(22px,3vw,30px);font-weight:700;margin-bottom:12px}
+.pricing-card p{color:var(--muted);margin-bottom:28px;font-size:16px}
+.pricing-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;text-align:left;margin-bottom:32px}
+.pricing-features li{list-style:none;display:flex;align-items:flex-start;gap:10px;font-size:14px;font-weight:600}
+.pricing-features .icon{width:18px;height:18px;color:var(--emerald);margin-top:2px;flex-shrink:0}
+.pricing-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+.faq{max-width:820px;margin:0 auto}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;font-size:16px;font-weight:700;text-align:left;color:var(--text)}
+.faq-q .chev{transition:transform .3s ease;color:var(--emerald-dark);flex-shrink:0}
+.faq-item.open .chev{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a-inner{padding:0 24px 22px;font-size:14.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:16px;margin:0 24px}
+.faq-item.open .faq-a{max-height:500px}
+
+.final-cta{background:linear-gradient(135deg,var(--emerald-dark),var(--emerald-deep));color:#fff;text-align:center;padding:80px 0}
+.final-cta h2{font-size:clamp(26px,4vw,38px);font-weight:700;margin-bottom:14px}
+.final-cta p{color:#b8e6d2;margin-bottom:32px;font-size:17px;max-width:560px;margin-left:auto;margin-right:auto}
+
+footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1.3fr;gap:40px;margin-bottom:48px}
+.footer-col h4{color:#fff;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:18px}
+.footer-col a{display:block;font-size:14px;padding:5px 0;color:#9fc9b4;transition:color .2s}
+.footer-col a:hover{color:#34d399}
+.footer-brand p{font-size:14px;margin-top:14px;max-width:300px}
+.footer-brand .logo{color:#fff}
+.footer-brand .logo small{color:#9fc9b4}
+.footer-contact{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:22px}
+.footer-contact h4{color:#fff;margin-bottom:12px}
+.footer-contact p{font-size:14px;margin-bottom:8px}
+.footer-contact a{color:#34d399;font-weight:600}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.10);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px}
+
+.whatsapp-float{position:fixed;bottom:28px;right:28px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.45);z-index:999;transition:transform .2s}
+.whatsapp-float:hover{transform:scale(1.08)}
+.whatsapp-float svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media (max-width:960px){
+  .hero-grid,.highlight-grid{grid-template-columns:1fr;gap:40px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:12px 24px;border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 0;border-bottom:1px solid var(--border);width:100%}
+  .menu-toggle{display:block}
+  .nav-cta .btn-outline{display:none}
+  section{padding:64px 0}
+}
+@media (max-width:560px){
+  .footer-grid{grid-template-columns:1fr}
+  .pricing-card{padding:36px 24px}
+  .hero-ctas .btn{width:100%}
+  .whatsapp-float{bottom:20px;right:20px;width:54px;height:54px}
+}
+</style>
+</head>
+<body>
+
+<svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 2.5h12V21l-2.5-1.5L13 21l-2-1.5L9 21l-3-1.5V2.5z"/><path d="M9 7h6M9 11h6M9 15h4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2.5 3h2l2.4 12.2a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.5L20.5 8H6"/></symbol>
+  <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M6 3v4"/><path d="M4 3v2.5a2 2 0 0 0 4 0V3"/><path d="M6 7v14"/><path d="M14.5 3c2.8 2.2 2.8 5.5 0 7.5l-1.5 10.5"/></symbol>
+  <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3"/><circle cx="18.5" cy="17.5" r="3"/><path d="M5.5 17.5l4-8h3"/><path d="M12.5 9.5l3 8"/><path d="M12.5 9.5h2.5l3.5 8"/><path d="M9.5 11.5h3"/></symbol>
+  <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.6"/><path d="M5.5 12h.01M18.5 12h.01"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx=".5"/><rect x="12" y="8" width="3" height="10" rx=".5"/><rect x="17" y="5" width="3" height="13" rx=".5"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="5" y="5" width="3" height="3" fill="currentColor" stroke="none"/><rect x="16" y="5" width="3" height="3" fill="currentColor" stroke="none"/><rect x="5" y="16" width="3" height="3" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.8 4.5-2.3 1.6a12 12 0 0 0 5 5l1.6-2.3L19.5 14.5V18a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 3 6.7 2 2 0 0 1 5 4z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9.5" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-globe2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-whats" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.7L3 21l4.4-1.2A9 9 0 1 0 12 3z"/><path d="M9 8.5c.3 2 2 3.8 4 4.2l1.3-1.3 2.2 1v1.6c0 .8-.7 1.5-1.5 1.5A7.5 7.5 0 0 1 8 9.5c0-.8.7-1.5 1.5-1.5h1l-1.5 2z" fill="currentColor" stroke="none"/></symbol>
+</svg>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">
+      <span class="logo-mark"><svg class="icon"><use href="#i-receipt"/></svg></span>
+      <span>Sistema de Atendimento<small>FoxTail Consulting</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#dores">Dores</a>
+      <a href="#cardapio">Cardápio Digital</a>
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#planos">Planos</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://wa.me/5519982340763?text=Olá! Quero saber mais sobre o PDV" class="btn btn-outline" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a href="https://wa.me/5519982340763?text=Olá! Quero uma demonstração do sistema" class="btn btn-primary" target="_blank" rel="noopener">Demonstração</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu"><svg class="icon"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="topo">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <span class="eyebrow"><svg class="icon" style="width:14px;height:14px"><use href="#i-globe"/></svg> PDV 100% web · Cardápio Digital incluso</span>
+      <h1>PDV completo + <span class="hl">Cardápio Digital</span> com pedido online via <span class="hl-amber">PIX</span></h1>
+      <p class="lead">Sistema de atendimento para restaurante, pizzaria, lanchonete e bar. Comandas digitais, cozinha integrada e link exclusivo do cardápio para o cliente fazer o pedido e pagar via PIX.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/5519982340763?text=Olá! Quero uma demonstração do PDV + Cardápio Digital" class="btn btn-whatsapp" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#i-whats"/></svg> Falar no WhatsApp
+        </a>
+        <a href="https://wa.me/5519982340763?text=Olá! Quero testar o sistema grátis" class="btn btn-outline" target="_blank" rel="noopener">Quero testar grátis</a>
+      </div>
+      <div class="hero-trust">
+        <span><svg class="icon"><use href="#i-check"/></svg> Comandas + Cozinha integrada</span>
+        <span><svg class="icon"><use href="#i-check"/></svg> Cardápio Digital com pedido PIX</span>
+        <span><svg class="icon"><use href="#i-check"/></svg> Fechamento de caixa conferido</span>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-badge">Destaque</div>
+      <h3>O que você resolve com o sistema</h3>
+      <ul>
+        <li><span class="check"><svg class="icon"><use href="#i-check"/></svg></span> Pedidos do salão e delivery no mesmo lugar</li>
+        <li><span class="check"><svg class="icon"><use href="#i-check"/></svg></span> Cliente pede e paga via PIX pelo link do cardápio</li>
+        <li><span class="check"><svg class="icon"><use href="#i-check"/></svg></span> Cozinha recebe os pedidos automaticamente</li>
+        <li><span class="check"><svg class="icon"><use href="#i-check"/></svg></span> Caixa fecha com conferência automática</li>
+        <li><span class="check"><svg class="icon"><use href="#i-check"/></svg></span> 100% web — funciona no celular, tablet e computador</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DORES -->
+<section id="dores">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow amber">Dores do dia a dia</span>
+      <h2 class="section-title">Problemas que todo dono de restaurante conhece</h2>
+      <p class="section-sub">Cada dor abaixo é resolvida por uma funcionalidade real do sistema.</p>
+    </div>
+    <div class="grid">
+      <div class="card reveal">
+        <span class="dor-tag">Pedido errado ou perdido</span>
+        <div class="card-icon amber"><svg class="icon"><use href="#i-cart"/></svg></div>
+        <h3>Fim da anotação no bloquinho</h3>
+        <p>Pedido lançado direto no PDV e enviado automaticamente para a cozinha. Sem rasura, sem perda.</p>
+      </div>
+      <div class="card reveal">
+        <span class="dor-tag">Cliente quer pedir pelo celular</span>
+        <div class="card-icon amber"><svg class="icon"><use href="#i-qr"/></svg></div>
+        <h3>Cardápio Digital com pedido PIX</h3>
+        <p>Gere um link exclusivo. O cliente escolhe os itens, finaliza e paga via PIX. O pedido cai no seu sistema.</p>
+      </div>
+      <div class="card reveal">
+        <span class="dor-tag">Caixa não fecha</span>
+        <div class="card-icon amber"><svg class="icon"><use href="#i-cash"/></svg></div>
+        <h3>Conferência automática</h3>
+        <p>Resumo por forma de pagamento e diferença calculada na hora. Fecha o turno com confiança.</p>
+      </div>
+      <div class="card reveal">
+        <span class="dor-tag">Sem visão do negócio</span>
+        <div class="card-icon amber"><svg class="icon"><use href="#i-chart"/></svg></div>
+        <h3>Dashboard em tempo real</h3>
+        <p>Central do Dia com urgências, estoque baixo e visão financeira do movimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARDÁPIO DIGITAL (DESTAQUE) -->
+<section class="highlight-band" id="cardapio">
+  <div class="container">
+    <div class="highlight-grid">
+      <div class="reveal">
+        <span class="eyebrow">Diferencial principal</span>
+        <h2 class="section-title">Cardápio Digital + Pedido via PIX</h2>
+        <p class="section-sub" style="color:#9fc9b4;margin-bottom:0">Seu cliente não precisa de iFood nem de mensagem no WhatsApp. Ele acessa o link, escolhe os itens e paga com PIX.</p>
+        <ul class="highlight-list">
+          <li><span class="num">1</span> Você gera o link exclusivo do cardápio (vinculado aos seus produtos)</li>
+          <li><span class="num">2</span> O cliente escolhe os itens e finaliza o pedido</li>
+          <li><span class="num">3</span> Pagamento via PIX (único meio disponível no momento)</li>
+          <li><span class="num">4</span> O pedido cai automaticamente no seu sistema e na cozinha</li>
+        </ul>
+      </div>
+      <div class="highlight-box reveal">
+        <h4>Como funciona hoje</h4>
+        <p>O Cardápio Digital está vinculado ao cadastro de produtos do sistema. O cliente consegue montar o pedido e pagar via PIX.</p>
+        <p style="margin-bottom:0">Fotos e vídeos dos pratos e outros meios de pagamento serão adicionados em breve.</p>
+        <div style="margin-top:18px">
+          <span class="tag">Disponível agora · PIX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNCIONALIDADES -->
+<section id="funcionalidades">
+  <div class="container">
+    <div class="reveal center">
+      <span class="eyebrow">Funcionalidades</span>
+      <h2 class="section-title">Tudo que você precisa no dia a dia</h2>
+      <p class="section-sub">PDV, mesas, cozinha, entregas e financeiro em um só sistema web.</p>
+    </div>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-cart"/></svg></div>
+        <h3>PDV e Comandas</h3>
+        <p>Atendimento balcão, mesa ou delivery na mesma tela. Busca por nome ou categoria e atendimento rápido dos mais vendidos.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-qr"/></svg></div>
+        <h3>Mesas com QR Code</h3>
+        <p>QR individual por mesa com acesso ao cardápio digital. Pedidos feitos pelo cliente vão direto para a cozinha.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-utensils"/></svg></div>
+        <h3>Cozinha / Produção</h3>
+        <p>Painel de preparo com atualização automática. Itens das comandas e dos pedidos do cardápio aparecem em “A Fazer”.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-bike"/></svg></div>
+        <h3>Entregas e Entregador</h3>
+        <p>Kanban por estágio e módulo separado para o entregador acessar só as suas entregas (com telefone e senha temporária).</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-cash"/></svg></div>
+        <h3>Fechamento de Caixa</h3>
+        <p>Conferência esperado vs. contado, sangrias registradas e resumo por forma de pagamento.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-chart"/></svg></div>
+        <h3>Dashboard e Financeiro</h3>
+        <p>Central do Dia com urgências e visão de fluxo de caixa para tomar decisões com base em dados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona" style="background:var(--bg-soft)">
+  <div class="container">
+    <div class="reveal center">
+      <span class="eyebrow">Como funciona</span>
+      <h2 class="section-title">Do pedido ao relatório em 5 passos</h2>
+      <p class="section-sub">Fluxo simples, pensado para o ritmo do restaurante.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>Cadastre produtos</h4>
+        <p>Monte seu cardápio no sistema. Ele alimenta o PDV e o Cardápio Digital.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>Lance o pedido</h4>
+        <p>No PDV (balcão/mesa) ou pelo link do Cardápio Digital (cliente).</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>Cozinha recebe</h4>
+        <p>O pedido aparece automaticamente no painel de produção.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h4>Cliente paga</h4>
+        <p>No salão ou via PIX pelo Cardápio Digital.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">5</div>
+        <h4>Feche o caixa</h4>
+        <p>Conferência automática e relatórios do dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diff-band" id="diferenciais">
+  <div class="container">
+    <div class="reveal center">
+      <span class="eyebrow">Diferenciais</span>
+      <h2 class="section-title">Por que escolher este sistema</h2>
+      <p class="section-sub">Pensado para o ritmo de restaurante, pizzaria e lanchonete.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-globe2"/></svg></div>
+        <h3>100% web e PWA</h3>
+        <p>Acesse de qualquer navegador. Instale como app no celular ou computador. Sem instalação tradicional.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-qr"/></svg></div>
+        <h3>Cardápio Digital + PIX</h3>
+        <p>Link exclusivo para o cliente pedir e pagar. O pedido entra direto no sistema.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-bike"/></svg></div>
+        <h3>Módulo do entregador</h3>
+        <p>Acesso separado com telefone e senha temporária. Ele vê só as entregas dele.</p>
+      </div>
+      <div class="diff-card reveal">
+        <div class="card-icon"><svg class="icon"><use href="#i-lock"/></svg></div>
+        <h3>Controle de permissões</h3>
+        <p>Ações críticas (desconto alto, cancelamento, sangria) exigem senha de gerente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section id="planos">
+  <div class="container">
+    <div class="reveal center">
+      <span class="eyebrow">Planos</span>
+      <h2 class="section-title">Plano sob medida para o seu estabelecimento</h2>
+      <p class="section-sub">Fale conosco e monte o plano ideal para o seu volume.</p>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="big">Consulte condições especiais</div>
+      <p>Planos personalizados por volume de vendas. Incluem PDV, Cardápio Digital, cozinha, entregas e financeiro.</p>
+      <ul class="pricing-features">
+        <li><svg class="icon"><use href="#i-check"/></svg> Todos os módulos liberados</li>
+        <li><svg class="icon"><use href="#i-check"/></svg> Cardápio Digital com pedido PIX</li>
+        <li><svg class="icon"><use href="#i-check"/></svg> Usuários e terminais conforme necessidade</li>
+        <li><svg class="icon"><use href="#i-check"/></svg> Módulo do entregador incluso</li>
+        <li><svg class="icon"><use href="#i-check"/></svg> Suporte na implantação</li>
+        <li><svg class="icon"><use href="#i-check"/></svg> Sem fidelidade — cancele quando quiser</li>
+      </ul>
+      <div class="pricing-ctas">
+        <a href="https://wa.me/5519982340763?text=Olá! Quero uma proposta comercial do PDV" class="btn btn-primary" target="_blank" rel="noopener">Solicitar proposta</a>
+        <a href="https://wa.me/5519982340763?text=Olá! Quero agendar uma demonstração" class="btn btn-outline" target="_blank" rel="noopener">Agendar demonstração</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--bg-soft)">
+  <div class="container">
+    <div class="reveal center">
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2 class="section-title">Perguntas que mais recebemos</h2>
+      <p class="section-sub">Respostas diretas e honestas.</p>
+    </div>
+    <div class="faq reveal">
+      <div class="faq-item">
+        <button class="faq-q">Preciso instalar algo no computador?<svg class="icon chev"><use href="#i-chev"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Não. O sistema é 100% web (PWA). Basta abrir o endereço no navegador. Você também pode instalar como app na tela inicial do celular, tablet ou computador.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Como funciona o Cardápio Digital?<svg class="icon chev"><use href="#i-chev"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Você gera um link exclusivo vinculado aos produtos cadastrados. O cliente acessa, escolhe os itens, finaliza o pedido e paga via PIX. O pedido entra automaticamente no sistema e na cozinha. Fotos e vídeos dos pratos ainda não estão disponíveis nesta versão.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quais formas de pagamento o cliente pode usar no Cardápio Digital?<svg class="icon chev"><use href="#i-chev"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">No momento, apenas PIX. Outros meios de pagamento serão adicionados em breve.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Funciona em tablet e celular?<svg class="icon chev"><use href="#i-chev"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim. A interface é responsiva e o sistema pode ser instalado como PWA em Android, iOS e desktop.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Tem controle de entregadores?<svg class="icon chev"><use href="#i-chev"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim. Existe um módulo separado em que o entregador acessa com telefone e senha temporária e vê apenas as entregas dele.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Integra com iFood ou emite NFC-e?<svg class="icon chev"><use href="#i-chev"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Nesta versão não há integração nativa com iFood, Rappi, TEF ou emissão de NFC-e/SAT. O foco atual é o fluxo interno do estabelecimento + Cardápio Digital com PIX. Confirme na demonstração se há integrações planejadas para o seu caso.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final-cta" id="contato">
+  <div class="container reveal">
+    <h2>Pronto para atender melhor e vender pelo Cardápio Digital?</h2>
+    <p>Fale agora com a FoxTail Consulting e veja o sistema funcionando com o seu tipo de negócio.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="https://wa.me/5519982340763?text=Olá! Quero uma demonstração do PDV + Cardápio Digital" class="btn btn-light" target="_blank" rel="noopener">
+        <svg class="icon"><use href="#i-whats"/></svg> Falar no WhatsApp
+      </a>
+      <a href="https://wa.me/5519982340763?text=Olá! Quero testar o sistema" class="btn btn-orange" target="_blank" rel="noopener">Quero testar grátis</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark"><svg class="icon"><use href="#i-receipt"/></svg></span>
+          <span>Sistema de Atendimento<small>FoxTail Consulting</small></span>
+        </a>
+        <p>PDV web completo para restaurante, pizzaria, lanchonete e bar, com Cardápio Digital e pedido via PIX.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produto</h4>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#cardapio">Cardápio Digital</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#planos">Planos</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-contact">
+          <h4>Fale com a FoxTail</h4>
+          <p>WhatsApp: <a href="https://wa.me/5519982340763" target="_blank" rel="noopener">(19) 98234-0763</a></p>
+          <p style="margin-top:12px;font-size:13px;opacity:.85">Desenvolvido por FoxTail Consulting</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 FoxTail Consulting. Todos os direitos reservados.</span>
+      <span>PDV · Cardápio Digital · Pedido via PIX</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flutuante -->
+<a href="https://wa.me/5519982340763?text=Olá! Vim pelo site e quero saber mais sobre o PDV + Cardápio Digital" 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener"
+   aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.7L3 21l4.4-1.2A9 9 0 1 0 12 3z"/><path d="M9 8.5c.3 2 2 3.8 4 4.2l1.3-1.3 2.2 1v1.6c0 .8-.7 1.5-1.5 1.5A7.5 7.5 0 0 1 8 9.5c0-.8.7-1.5 1.5-1.5h1l-1.5 2z" fill="#fff"/></svg>
+</a>
+
+<script>
+(function(){
+  // Scroll reveal
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Mobile menu
+  var toggle = document.getElementById('menuToggle');
+  var links = document.getElementById('navLinks');
+  if(toggle && links){
+    toggle.addEventListener('click', function(){
+      links.classList.toggle('open');
+      var open = links.classList.contains('open');
+      toggle.innerHTML = '<svg class="icon"><use href="#'+(open?'i-x':'i-menu')+'"/></svg>';
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ links.classList.remove('open'); toggle.innerHTML = '<svg class="icon"><use href="#i-menu"/></svg>'; });
+    });
+  }
+})();
+</script>
+</body>
+</html>
