@@ -1,0 +1,19 @@
+# ============================================================
+# robots.txt — SmartPrint Landing Page
+# Substitua "https://www.smartprint.com.br" pelo seu domínio real.
+# ============================================================
+
+User-agent: *
+Allow: /
+
+# Áreas administrativas / privadas (bloqueie o que não deve ser indexado)
+Disallow: /admin
+Disallow: /login
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /config
+Disallow: /*?preview=
+Disallow: /*.pdf$
+
+# Sitemap (substitua pelo domínio real)
+Sitemap: https://www.smartprint.com.br/sitemap.xml

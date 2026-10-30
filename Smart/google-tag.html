@@ -1,0 +1,36 @@
+<!-- ============================================================
+     GOOGLE TAG (Google Analytics 4 + Google Tag Manager)
+     Cole TODO este bloco o mais alto possível dentro do <head>
+     da sua landing page.
+     Substitua:
+       G-XXXXXXXXXX  -> seu ID do Google Analytics 4 (GA4)
+       GTM-XXXXXXX   -> seu ID do Google Tag Manager (se usar)
+     ============================================================ -->
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google tag (gtag.js) - Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<!-- End Google tag -->
+
+<!-- ============================================================
+     OPCIONAL: Se usar apenas GA4 (sem GTM), remova o bloco do GTM.
+     Se usar apenas GTM (e o GA4 dentro do GTM), remova o bloco gtag.
+     Além disso, cole este <noscript> imediatamente após a tag <body>:
+     ============================================================ -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
