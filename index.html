@@ -48,6 +48,8 @@
       rel="stylesheet"
     />
     <style>
+      /* Hallmark · redesign: full · theme: Coral · genre: modern-minimal · v2.0.0 */
+      /* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: E, preserve the existing product UI */
       :root {
         --bg: #f7f4ef;
         --bg-soft: #efe9df;
@@ -902,8 +904,10 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="./tokens.css" />
+    <link rel="stylesheet" href="./base.css" />
   </head>
-  <body>
+  <body data-page="restaurant">
     <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
       <symbol id="i-receipt" viewBox="0 0 24 24">
         <path d="M6 2.5h12V21l-2.5-1.5L13 21l-2-1.5L9 21l-3-1.5V2.5z" />
@@ -1055,20 +1059,12 @@
     <section class="hero" id="topo">
       <div class="container hero-grid">
         <div class="reveal">
-          <span class="eyebrow"
-            ><svg class="icon" style="width: 14px; height: 14px">
-              <use href="#i-globe" />
-            </svg>
-            Operação de caixa e pedidos sob controle</span
-          >
           <h1>
-            Seu restaurante com <span class="hl">caixa fechando certo</span> e
-            pedidos pelo <span class="hl-amber">Cardápio Digital</span>
+            Caixa certo. Pedidos pelo
+            <span class="hl">cardápio digital</span>
           </h1>
           <p class="lead">
-            Não entregamos só o sistema. Configuramos o PDV + Cardápio Digital
-            com PIX e acompanhamos sua operação nos primeiros 30 dias para
-            garantir que está funcionando de verdade.
+            PDV com PIX, implantação e acompanhamento para sua operação.
           </p>
           <div class="hero-ctas">
             <a
@@ -1146,7 +1142,6 @@
     <section id="dores">
       <div class="container">
         <div class="reveal">
-          <span class="eyebrow amber">Dores do dia a dia</span>
           <h2 class="section-title">
             Problemas que todo dono de restaurante conhece
           </h2>
@@ -1208,7 +1203,6 @@
       <div class="container">
         <div class="highlight-grid">
           <div class="reveal">
-            <span class="eyebrow">Diferencial principal</span>
             <h2 class="section-title">Cardápio Digital + Pedido via PIX</h2>
             <p class="section-sub" style="color: #9fc9b4; margin-bottom: 0">
               Seu cliente não precisa de iFood nem de mensagem no WhatsApp. Ele
@@ -1255,7 +1249,6 @@
     <section id="funcionalidades">
       <div class="container">
         <div class="reveal center">
-          <span class="eyebrow">Funcionalidades</span>
           <h2 class="section-title">Tudo que você precisa no dia a dia</h2>
           <p class="section-sub">
             PDV, mesas, cozinha, entregas e financeiro em um só sistema web.
@@ -1330,7 +1323,6 @@
     <section id="como-funciona" style="background: var(--bg-soft)">
       <div class="container">
         <div class="reveal center">
-          <span class="eyebrow">Como funciona</span>
           <h2 class="section-title">Do pedido ao relatório em 5 passos</h2>
           <p class="section-sub">
             Fluxo simples, pensado para o ritmo do restaurante.
@@ -1375,7 +1367,6 @@
     <section class="diff-band" id="diferenciais">
       <div class="container">
         <div class="reveal center">
-          <span class="eyebrow">Diferenciais</span>
           <h2 class="section-title">Por que escolher este sistema</h2>
           <p class="section-sub">
             Pensado para o ritmo de restaurante, pizzaria e lanchonete.
@@ -1430,7 +1421,6 @@
     <section id="oferta" style="background: var(--bg-soft)">
       <div class="container">
         <div class="reveal center">
-          <span class="eyebrow">Oferta sob Controle</span>
           <h2 class="section-title">Software + operação acompanhada</h2>
           <p class="section-sub">
             Você escolhe: só o sistema ou o pacote completo com a gente junto
@@ -1470,7 +1460,6 @@
     <section id="planos">
       <div class="container">
         <div class="reveal center">
-          <span class="eyebrow">Planos</span>
           <h2 class="section-title">Escolha como quer começar</h2>
           <p class="section-sub">
             A maioria dos clientes prefere começar com acompanhamento para ter
@@ -1599,7 +1588,6 @@
     <section id="faq" style="background: var(--bg-soft)">
       <div class="container">
         <div class="reveal center">
-          <span class="eyebrow">Dúvidas frequentes</span>
           <h2 class="section-title">Perguntas que mais recebemos</h2>
           <p class="section-sub">Respostas diretas e honestas.</p>
         </div>

@@ -18,6 +18,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Hallmark · redesign: full · theme: Coral · genre: modern-minimal · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: E, preserve the existing product UI */
 :root{
   --bg:#f7f4ef; --bg-soft:#efe9df; --card:#fffcf7;
   --text:#1a1f1c; --muted:#5a635c;
@@ -171,8 +173,10 @@ footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
   "author": {"@type": "Organization", "name": "FoxTail Consulting"}
 }
 </script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../base.css">
 </head>
-<body>
+<body data-page="construction">
 <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
@@ -219,9 +223,8 @@ footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
 <section class="hero" id="topo">
   <div class="container hero-grid">
     <div class="reveal">
-      <span class="eyebrow"><svg class="icon" style="width:14px;height:14px"><use href="#i-bot"/></svg> Automação com IA · Equipe mínima de escritório</span>
-      <h1>Construtora com <span class="hl">escritório enxuto</span> e operação <span class="hl-amber">sob controle</span></h1>
-      <p class="lead">ERP completo de obras + assistente de IA para financeiro, licitações, certidões, RDO e RH. Você confirma as decisões críticas; a rotina operacional deixa de depender de uma equipe grande.</p>
+      <h1>Obras sob controle, com equipe enxuta</h1>
+      <p class="lead">ERP e IA para obras; você confirma decisões importantes.</p>
       <div class="hero-ctas">
         <a href="https://wa.me/5519982340763?text=Olá! Quero a oferta Operação Enxuta com IA (ConstruERP + implantação + 30 dias de acompanhamento)" class="btn btn-whatsapp" target="_blank" rel="noopener">
           <svg class="icon"><use href="#i-whats"/></svg> Quero com acompanhamento
@@ -252,7 +255,6 @@ footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
 <section id="dores">
   <div class="container">
     <div class="reveal">
-      <span class="eyebrow amber">Dores do escritório de obra</span>
       <h2 class="section-title">O que trava a construtora com equipe pequena</h2>
       <p class="section-sub">Cada dor abaixo é atacada pelo ERP + assistente de IA.</p>
     </div>
@@ -290,7 +292,6 @@ footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
   <div class="container">
     <div class="highlight-grid">
       <div class="reveal">
-        <span class="eyebrow">Diferencial principal</span>
         <h2 class="section-title">Assistente operacional com IA</h2>
         <p class="section-sub" style="color:#9fc9b4;margin-bottom:0">Financeiro · RDO · Certidões · Licitações · RH — sempre com confirmação humana.</p>
         <ul class="highlight-list">
@@ -318,7 +319,6 @@ footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
 <section id="modulos">
   <div class="container">
     <div class="reveal center">
-      <span class="eyebrow">Módulos</span>
       <h2 class="section-title">Tudo que a construtora precisa no dia a dia</h2>
       <p class="section-sub">Do canteiro ao financeiro e às licitações — em um só sistema.</p>
     </div>
@@ -361,7 +361,6 @@ footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
 <section id="como-funciona" style="background:var(--bg-soft)">
   <div class="container">
     <div class="reveal center">
-      <span class="eyebrow">Como funciona</span>
       <h2 class="section-title">Da implantação à operação enxuta</h2>
       <p class="section-sub">Em poucas semanas o escritório passa a rodar no ritmo do sistema.</p>
     </div>
@@ -399,7 +398,6 @@ footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
 <section id="oferta">
   <div class="container">
     <div class="reveal center">
-      <span class="eyebrow">Oferta sob Controle</span>
       <h2 class="section-title">Software + operação acompanhada</h2>
       <p class="section-sub">Você escolhe: só o ERP ou o pacote com a gente implantando e acompanhando os primeiros 30 dias.</p>
     </div>
@@ -422,7 +420,6 @@ footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
 <section id="planos" class="diff-band">
   <div class="container">
     <div class="reveal center">
-      <span class="eyebrow">Planos</span>
       <h2 class="section-title">Escolha como quer começar</h2>
       <p class="section-sub">Para quem quer reduzir dependência de equipe de escritório, o pacote com acompanhamento acelera o resultado.</p>
     </div>
@@ -462,7 +459,6 @@ footer{background:var(--dark);color:#9fc9b4;padding:64px 0 32px}
 <section id="faq">
   <div class="container">
     <div class="reveal center">
-      <span class="eyebrow">Dúvidas frequentes</span>
       <h2 class="section-title">Perguntas que mais recebemos</h2>
       <p class="section-sub">Respostas diretas.</p>
     </div>

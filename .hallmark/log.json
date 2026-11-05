@@ -1,0 +1,23 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "theme": "Coral",
+  "prompt": "Redesign the four FoxTail landing pages with distinct color palettes because the brand has no visual identity yet.",
+  "shape": "Feature Stack",
+  "axes": "light/grotesk-sans/warm",
+  "hero": "Stage with existing product interface",
+  "nav": "floating pill",
+  "footer": "index columns",
+  "imagery": "Existing product interfaces; no external photos",
+  "entry": "Existing page CTAs, including WhatsApp inquiry links",
+  "fingerprint": "feature-stack|coral|stage|floating-pill|index-columns|distinct-page-palettes",
+  "sections": [
+   "Existing page sections retained across restaurant POS, construction ERP, operations service, and print-shop POS"
+  ],
+  "signature": "A distinct palette for each product offering",
+  "photos": [],
+  "waived": [],
+  "date": "2026-11-05"
+ }
+]

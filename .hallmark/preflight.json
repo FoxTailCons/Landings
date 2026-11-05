@@ -1,0 +1,19 @@
+{
+  "scanned": "2026-11-05",
+  "findings": {
+    "fonts": "Fraunces display + Source Sans 3 body in all four landing pages (index.html:72-73; Constru/index.html:30-31; Services/index.html:28-29; Smart/index.html:52-53)",
+    "palette": "Shared warm paper and green-led palette (index.html:51-72; Constru/index.html:21-31; Services/index.html:18-29; Smart/index.html:43-53)",
+    "motion": "Static HTML with page-local CSS; no shared motion library or project manifest found",
+    "spacing": "Page-local CSS; no shared spacing tokens or project manifest found",
+    "framework": "Four standalone Portuguese HTML landing pages: root, Constru, Services, Smart"
+  },
+  "preserve": [
+    "Existing brand name, page copy, SEO metadata, links, forms, and interactive behavior",
+    "Fraunces and Source Sans 3 font pairing and the warm paper/green brand palette",
+    "Distinct offerings for restaurant POS, construction ERP, restaurant operations service, and print-shop POS"
+  ],
+  "introduce": [
+    "A cohesive Hallmark visual system and page-specific hierarchy across all four index.html files",
+    "Responsive layout and accessibility refinements required by Hallmark"
+  ]
+}
