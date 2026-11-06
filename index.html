@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt_BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#059669" />
     <meta
       name="google-site-verification"
       content="fsmbzMU7arr5Olob2zVKXi4-wYwdtrhYesmrUkMb1hA"
@@ -43,6 +44,7 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" as="style" />
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -81,6 +83,15 @@
       }
       html {
         scroll-behavior: smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: thin;
+      }
+      html::-webkit-scrollbar {
+        width: 8px;
+      }
+      html::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 4px;
       }
       body {
         font-family: var(--font-body);
@@ -88,20 +99,58 @@
         color: var(--text);
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      :focus-visible {
+        outline: 2px solid var(--emerald);
+        outline-offset: 2px;
       }
       img {
         max-width: 100%;
         display: block;
       }
+      picture, img, svg {
+        display: block;
+        max-width: 100%;
+      }
       a {
         color: inherit;
         text-decoration: none;
+      }
+      a:focus,
+      a:hover {
+        text-decoration: underline;
       }
       button {
         font-family: inherit;
         cursor: pointer;
         border: none;
         background: none;
+      }
+      button:focus {
+        outline: 2px solid var(--emerald);
+        outline-offset: 2px;
+      }
+      .skip-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--emerald);
+        color: #fff;
+        padding: 8px 16px;
+        text-decoration: none;
+        z-index: 1000;
+        transform: translateY(-100%);
+        transition: transform 0.2s ease;
+      }
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+      .nav a:focus {
+        outline: 2px solid var(--emerald);
+        outline-offset: 2px;
+        border-radius: 2px;
+        padding: 4px;
       }
       .container {
         max-width: 1180px;
@@ -187,6 +236,11 @@
       .btn:hover {
         transform: none;
         filter: brightness(1.05);
+      }
+      .btn:focus {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+        border-radius: 14px;
       }
       .btn-primary {
         background: var(--emerald);
@@ -809,6 +863,14 @@
         gap: 12px;
         font-size: 13px;
       }
+      .footer-bottom a {
+        color: #34d399;
+        text-decoration: none;
+      }
+      .footer-bottom a:focus {
+        outline: 1px solid #34d399;
+        outline-offset: 2px;
+      }
 
       .whatsapp-float {
         position: fixed;
@@ -1015,8 +1077,9 @@
       </symbol>
     </svg>
 
-    <!-- HEADER -->
+<!-- HEADER -->
     <header>
+      <a href="#topo" class="skip-link">Pular para o conteúdo</a>
       <div class="container nav">
         <a href="#" class="logo">
           <span class="logo-mark"
@@ -1024,8 +1087,8 @@
           ></span>
           <span>Sistema de Atendimento<small>FoxTail Consulting</small></span>
         </a>
-        <nav class="nav-links" id="navLinks">
-          <a href="#dores">Dores</a>
+        <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+          <a href="#dores" aria-current="page">Dores</a>
           <a href="#cardapio">Cardápio Digital</a>
           <a href="#funcionalidades">Funcionalidades</a>
           <a href="#como-funciona">Como funciona</a>
@@ -1048,18 +1111,19 @@
             rel="noopener"
             >Demonstração</a
           >
-          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
             <svg class="icon"><use href="#i-menu" /></svg>
           </button>
         </div>
       </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" id="topo">
+    <main id="main-content" tabindex="-1" role="main">
+      <!-- HERO -->
+      <section class="hero" id="topo" aria-labelledby="hero-heading">
       <div class="container hero-grid">
         <div class="reveal">
-          <h1>
+          <h1 id="hero-heading">
             Caixa certo. Pedidos pelo
             <span class="hl">cardápio digital</span>
           </h1>
@@ -1072,6 +1136,7 @@
               class="btn btn-whatsapp"
               target="_blank"
               rel="noopener"
+              aria-label="Iniciar conversa no WhatsApp com oferta completa"
             >
               <svg class="icon"><use href="#i-whats" /></svg> Quero com
               acompanhamento
@@ -1081,20 +1146,21 @@
               class="btn btn-outline"
               target="_blank"
               rel="noopener"
+              aria-label="Iniciar conversa no WhatsApp com opção só sistema"
               >Só o sistema</a
             >
           </div>
           <div class="hero-trust">
             <span
-              ><svg class="icon"><use href="#i-check" /></svg> Implantação
+              ><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg> Implantação
               completa</span
             >
             <span
-              ><svg class="icon"><use href="#i-check" /></svg> 30 dias de
+              ><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg> 30 dias de
               acompanhamento</span
             >
             <span
-              ><svg class="icon"><use href="#i-check" /></svg> Cardápio Digital
+              ><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg> Cardápio Digital
               com PIX</span
             >
           </div>
@@ -1139,10 +1205,10 @@
     </section>
 
     <!-- DORES -->
-    <section id="dores">
+    <section id="dores" role="region" aria-labelledby="dores-heading" aria-roledescription="seção">
       <div class="container">
         <div class="reveal">
-          <h2 class="section-title">
+          <h2 id="dores-heading" class="section-title">
             Problemas que todo dono de restaurante conhece
           </h2>
           <p class="section-sub">
@@ -1153,7 +1219,7 @@
           <div class="card reveal">
             <span class="dor-tag">Pedido errado ou perdido</span>
             <div class="card-icon amber">
-              <svg class="icon"><use href="#i-cart" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-cart" /></svg>
             </div>
             <h3>Fim da anotação no bloquinho</h3>
             <p>
@@ -1164,7 +1230,7 @@
           <div class="card reveal">
             <span class="dor-tag">Cliente quer pedir pelo celular</span>
             <div class="card-icon amber">
-              <svg class="icon"><use href="#i-qr" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-qr" /></svg>
             </div>
             <h3>Cardápio Digital com pedido PIX</h3>
             <p>
@@ -1175,7 +1241,7 @@
           <div class="card reveal">
             <span class="dor-tag">Caixa não fecha</span>
             <div class="card-icon amber">
-              <svg class="icon"><use href="#i-cash" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-cash" /></svg>
             </div>
             <h3>Conferência automática</h3>
             <p>
@@ -1186,7 +1252,7 @@
           <div class="card reveal">
             <span class="dor-tag">Sem visão do negócio</span>
             <div class="card-icon amber">
-              <svg class="icon"><use href="#i-chart" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-chart" /></svg>
             </div>
             <h3>Dashboard em tempo real</h3>
             <p>
@@ -1199,11 +1265,11 @@
     </section>
 
     <!-- CARDÁPIO DIGITAL (DESTAQUE) -->
-    <section class="highlight-band" id="cardapio">
+    <section class="highlight-band" id="cardapio" role="region" aria-labelledby="cardapio-heading">
       <div class="container">
         <div class="highlight-grid">
           <div class="reveal">
-            <h2 class="section-title">Cardápio Digital + Pedido via PIX</h2>
+            <h2 id="cardapio-heading" class="section-title">Cardápio Digital + Pedido via PIX</h2>
             <p class="section-sub" style="color: #9fc9b4; margin-bottom: 0">
               Seu cliente não precisa de iFood nem de mensagem no WhatsApp. Ele
               acessa o link, escolhe os itens e paga com PIX.
@@ -1246,10 +1312,10 @@
     </section>
 
     <!-- FUNCIONALIDADES -->
-    <section id="funcionalidades">
+    <section id="funcionalidades" role="region" aria-labelledby="funcionalidades-heading">
       <div class="container">
         <div class="reveal center">
-          <h2 class="section-title">Tudo que você precisa no dia a dia</h2>
+          <h2 id="funcionalidades-heading" class="section-title">Tudo que você precisa no dia a dia</h2>
           <p class="section-sub">
             PDV, mesas, cozinha, entregas e financeiro em um só sistema web.
           </p>
@@ -1320,10 +1386,10 @@
     </section>
 
     <!-- COMO FUNCIONA -->
-    <section id="como-funciona" style="background: var(--bg-soft)">
+    <section id="como-funciona" role="region" aria-labelledby="como-funciona-heading" style="background: var(--bg-soft)>
       <div class="container">
         <div class="reveal center">
-          <h2 class="section-title">Do pedido ao relatório em 5 passos</h2>
+          <h2 id="como-funciona-heading" class="section-title">Do pedido ao relatório em 5 passos</h2>
           <p class="section-sub">
             Fluxo simples, pensado para o ritmo do restaurante.
           </p>
@@ -1364,10 +1430,10 @@
     </section>
 
     <!-- DIFERENCIAIS -->
-    <section class="diff-band" id="diferenciais">
+    <section id="diferenciais" role="region" aria-labelledby="diferenciais-heading">
       <div class="container">
         <div class="reveal center">
-          <h2 class="section-title">Por que escolher este sistema</h2>
+          <h2 id="diferenciais-heading" class="section-title">Por que escolher este sistema</h2>
           <p class="section-sub">
             Pensado para o ritmo de restaurante, pizzaria e lanchonete.
           </p>
@@ -1375,7 +1441,7 @@
         <div class="diff-grid">
           <div class="diff-card reveal">
             <div class="card-icon">
-              <svg class="icon"><use href="#i-globe2" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-globe2" /></svg>
             </div>
             <h3>100% web e PWA</h3>
             <p>
@@ -1385,7 +1451,7 @@
           </div>
           <div class="diff-card reveal">
             <div class="card-icon">
-              <svg class="icon"><use href="#i-qr" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-qr" /></svg>
             </div>
             <h3>Cardápio Digital + PIX</h3>
             <p>
@@ -1395,7 +1461,7 @@
           </div>
           <div class="diff-card reveal">
             <div class="card-icon">
-              <svg class="icon"><use href="#i-bike" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-bike" /></svg>
             </div>
             <h3>Módulo do entregador</h3>
             <p>
@@ -1405,7 +1471,7 @@
           </div>
           <div class="diff-card reveal">
             <div class="card-icon">
-              <svg class="icon"><use href="#i-lock" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-lock" /></svg>
             </div>
             <h3>Controle de permissões</h3>
             <p>
@@ -1418,10 +1484,10 @@
     </section>
 
     <!-- O QUE VOCÊ RECEBE -->
-    <section id="oferta" style="background: var(--bg-soft)">
+    <section id="oferta" role="region" aria-labelledby="oferta-heading" style="background: var(--bg-soft)">
       <div class="container">
         <div class="reveal center">
-          <h2 class="section-title">Software + operação acompanhada</h2>
+          <h2 id="oferta-heading" class="section-title">Software + operação acompanhada</h2>
           <p class="section-sub">
             Você escolhe: só o sistema ou o pacote completo com a gente junto
             nos primeiros 30 dias.
@@ -1430,7 +1496,7 @@
         <div class="grid">
           <div class="card reveal">
             <div class="card-icon">
-              <svg class="icon"><use href="#i-globe2" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-globe2" /></svg>
             </div>
             <h3>O sistema</h3>
             <p>
@@ -1443,7 +1509,7 @@
             style="border-color: rgba(5, 150, 105, 0.35)"
           >
             <div class="card-icon">
-              <svg class="icon"><use href="#i-check" /></svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>
             </div>
             <h3>O acompanhamento (diferencial)</h3>
             <p>
@@ -1457,10 +1523,10 @@
     </section>
 
     <!-- PLANOS -->
-    <section id="planos">
+    <section id="planos" role="region" aria-labelledby="planos-heading">
       <div class="container">
         <div class="reveal center">
-          <h2 class="section-title">Escolha como quer começar</h2>
+          <h2 id="planos-heading" class="section-title">Escolha como quer começar</h2>
           <p class="section-sub">
             A maioria dos clientes prefere começar com acompanhamento para ter
             resultado mais rápido.
@@ -1585,20 +1651,20 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" style="background: var(--bg-soft)">
+    <section id="faq" role="region" style="background: var(--bg-soft)" aria-labelledby="faq-heading">
       <div class="container">
         <div class="reveal center">
-          <h2 class="section-title">Perguntas que mais recebemos</h2>
+          <h2 id="faq-heading" class="section-title">Perguntas que mais recebemos</h2>
           <p class="section-sub">Respostas diretas e honestas.</p>
         </div>
         <div class="faq reveal">
           <div class="faq-item">
-            <button class="faq-q">
-              Preciso instalar algo no computador?<svg class="icon chev">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq1-content">
+              Preciso instalar algo no computador?<svg class="icon chev" aria-hidden="true">
                 <use href="#i-chev" />
               </svg>
             </button>
-            <div class="faq-a">
+            <div id="faq1-content" class="faq-a" role="region">
               <div class="faq-a-inner">
                 Não. O sistema é 100% web (PWA). Basta abrir o endereço no
                 navegador. Você também pode instalar como app na tela inicial do
@@ -1607,12 +1673,12 @@
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-q">
-              Como funciona o Cardápio Digital?<svg class="icon chev">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq2-content">
+              Como funciona o Cardápio Digital?<svg class="icon chev" aria-hidden="true">
                 <use href="#i-chev" />
               </svg>
             </button>
-            <div class="faq-a">
+            <div id="faq2-content" class="faq-a" role="region">
               <div class="faq-a-inner">
                 Você gera um link exclusivo vinculado aos produtos cadastrados.
                 O cliente acessa, escolhe os itens, finaliza o pedido e paga via
@@ -1623,11 +1689,10 @@
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-q">
-              Quais formas de pagamento o cliente pode usar no Cardápio
-              Digital?<svg class="icon chev"><use href="#i-chev" /></svg>
+            <button class="faq-q" aria-expanded="false" aria-controls="faq3-content">
+              Quais formas de pagamento o cliente pode usar no Cardápio Digital?<svg class="icon chev" aria-hidden="true"><use href="#i-chev" /></svg>
             </button>
-            <div class="faq-a">
+            <div id="faq3-content" class="faq-a" role="region">
               <div class="faq-a-inner">
                 No momento, apenas PIX. Outros meios de pagamento serão
                 adicionados em breve.
@@ -1635,12 +1700,12 @@
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-q">
-              Funciona em tablet e celular?<svg class="icon chev">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq4-content">
+              Funciona em tablet e celular?<svg class="icon chev" aria-hidden="true">
                 <use href="#i-chev" />
               </svg>
             </button>
-            <div class="faq-a">
+            <div id="faq4-content" class="faq-a" role="region">
               <div class="faq-a-inner">
                 Sim. A interface é responsiva e o sistema pode ser instalado
                 como PWA em Android, iOS e desktop.
@@ -1648,12 +1713,12 @@
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-q">
-              Tem controle de entregadores?<svg class="icon chev">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq5-content">
+              Tem controle de entregadores?<svg class="icon chev" aria-hidden="true">
                 <use href="#i-chev" />
               </svg>
             </button>
-            <div class="faq-a">
+            <div id="faq5-content" class="faq-a" role="region">
               <div class="faq-a-inner">
                 Sim. Existe um módulo separado em que o entregador acessa com
                 telefone e senha temporária e vê apenas as entregas dele.
@@ -1662,11 +1727,10 @@
           </div>
 
           <div class="faq-item">
-            <button class="faq-q">
-              Qual a diferença entre “só o sistema” e a oferta “sob
-              Controle”?<svg class="icon chev"><use href="#i-chev" /></svg>
+            <button class="faq-q" aria-expanded="false" aria-controls="faq6-content">
+              Qual a diferença entre "só o sistema" e a oferta "sob Controle"?<svg class="icon chev" aria-hidden="true"><use href="#i-chev" /></svg>
             </button>
-            <div class="faq-a">
+            <div id="faq6-content" class="faq-a" role="region">
               <div class="faq-a-inner">
                 No plano só sistema você recebe o software e o suporte padrão.
                 Na oferta sob Controle fazemos a implantação completa,
@@ -1678,12 +1742,12 @@
           </div>
 
           <div class="faq-item">
-            <button class="faq-q">
-              Integra com iFood ou emite NFC-e?<svg class="icon chev">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq7-content">
+              Integra com iFood ou emite NFC-e?<svg class="icon chev" aria-hidden="true">
                 <use href="#i-chev" />
               </svg>
             </button>
-            <div class="faq-a">
+            <div id="faq7-content" class="faq-a" role="region">
               <div class="faq-a-inner">
                 Nesta versão não há integração nativa com iFood, Rappi, TEF ou
                 emissão de NFC-e/SAT. O foco atual é o fluxo interno do
@@ -1697,9 +1761,9 @@
     </section>
 
     <!-- CTA FINAL -->
-    <section class="final-cta" id="contato">
+    <section class="final-cta" id="contato" aria-labelledby="contato-heading">
       <div class="container reveal">
-        <h2>Pronto para ter a operação de caixa e pedidos sob controle?</h2>
+        <h2 id="contato-heading">Pronto para ter a operação de caixa e pedidos sob controle?</h2>
         <p>
           Fale agora com a FoxTail e escolha: só o sistema ou o pacote com
           acompanhamento de 30 dias.
@@ -1714,31 +1778,35 @@
         >
           <a
             href="https://wa.me/5519982340763?text=Olá! Quero a oferta Operação de Caixa e Pedidos sob Controle"
-            class="btn btn-light"
+            class="btn btn-primary"
             target="_blank"
             rel="noopener"
+            aria-label="Iniciar conversa no WhatsApp com oferta completa"
           >
-            <svg class="icon"><use href="#i-whats" /></svg> Falar no WhatsApp
+            <svg class="icon" aria-hidden="true"><use href="#i-whats" /></svg> Falar no WhatsApp
           </a>
           <a
             href="https://wa.me/5519982340763?text=Olá! Quero saber mais sobre a oferta sob Controle"
-            class="btn btn-orange"
+            class="btn btn-primary"
             target="_blank"
             rel="noopener"
+            aria-label="Iniciar conversa no WhatsApp com oferta sob controle"
             >Quero testar grátis</a
           >
         </div>
       </div>
     </section>
 
+    </main>
+
     <!-- FOOTER -->
-    <footer>
+    <footer role="contentinfo">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-col footer-brand">
             <a href="#" class="logo">
               <span class="logo-mark"
-                ><svg class="icon"><use href="#i-receipt" /></svg
+                ><svg class="icon" aria-hidden="true"><use href="#i-receipt" /></svg
               ></span>
               <span
                 >Sistema de Atendimento<small>FoxTail Consulting</small></span
@@ -1749,7 +1817,7 @@
               Cardápio Digital e pedido via PIX.
             </p>
           </div>
-          <div class="footer-col">
+          <nav class="footer-col" aria-label="Links do rodapé">
             <h4>Produto</h4>
             <a href="#funcionalidades">Funcionalidades</a>
             <a href="#cardapio">Cardápio Digital</a>
@@ -1757,7 +1825,7 @@
             <a href="#oferta">Oferta</a>
             <a href="#planos">Planos</a>
             <a href="#faq">FAQ</a>
-          </div>
+          </nav>
           <div class="footer-col">
             <div class="footer-contact">
               <h4>Fale com a FoxTail</h4>
@@ -1776,7 +1844,7 @@
             </div>
           </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom" role="presentation">
           <span
             >&copy; 2026 FoxTail Consulting. Todos os direitos reservados.</span
           >
@@ -1820,15 +1888,19 @@
           io.observe(el);
         });
 
-        // FAQ accordion
+        // FAQ accordion with ARIA state management
         document.querySelectorAll('.faq-q').forEach(function (btn) {
           btn.addEventListener('click', function () {
             var item = btn.parentElement;
             var wasOpen = item.classList.contains('open');
             document.querySelectorAll('.faq-item.open').forEach(function (i) {
               i.classList.remove('open');
+              i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
             });
-            if (!wasOpen) item.classList.add('open');
+            if (!wasOpen) {
+              item.classList.add('open');
+              btn.setAttribute('aria-expanded', 'true');
+            }
           });
         });
 
@@ -1837,8 +1909,9 @@
         var links = document.getElementById('navLinks');
         if (toggle && links) {
           toggle.addEventListener('click', function () {
-            links.classList.toggle('open');
-            var open = links.classList.contains('open');
+            var open = links.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open);
+            toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
             toggle.innerHTML =
               '<svg class="icon"><use href="#' +
               (open ? 'i-x' : 'i-menu') +
@@ -1847,11 +1920,45 @@
           links.querySelectorAll('a').forEach(function (a) {
             a.addEventListener('click', function () {
               links.classList.remove('open');
+              toggle.setAttribute('aria-expanded', 'false');
+              toggle.setAttribute('aria-label', 'Abrir menu');
               toggle.innerHTML =
                 '<svg class="icon"><use href="#i-menu"/></svg>';
             });
           });
         }
+        // Update aria-current based on scroll position
+        function updatePageIndicator() {
+          var sections = [
+            { id: 'dores', link: '#dores' },
+            { id: 'cardapio', link: '#cardapio' },
+            { id: 'funcionalidades', link: '#funcionalidades' },
+            { id: 'como-funciona', link: '#como-funciona' },
+            { id: 'oferta', link: '#oferta' },
+            { id: 'planos', link: '#planos' },
+            { id: 'faq', link: '#faq' },
+            { id: 'contato', link: '#contato' }
+          ];
+          var currentSection = '';
+          sections.forEach(function (section) {
+            var el = document.getElementById(section.id);
+            if (el && el.getBoundingClientRect().top < 150) {
+              currentSection = section.id;
+            }
+          });
+          sections.forEach(function (section) {
+            var link = document.querySelector('nav a[href="' + section.link + '"]');
+            if (link) {
+              if (section.id === currentSection) {
+                link.setAttribute('aria-current', 'page');
+              } else {
+                link.removeAttribute('aria-current');
+              }
+            }
+          });
+        }
+        window.addEventListener('scroll', updatePageIndicator);
+        document.addEventListener('DOMContentLoaded', updatePageIndicator);
       })();
     </script>
   </body>
